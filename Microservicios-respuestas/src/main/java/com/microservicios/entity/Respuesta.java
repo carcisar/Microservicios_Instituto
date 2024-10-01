@@ -39,6 +39,18 @@ public class Respuesta {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+	public Alumno getAlumno() {
+		return alumno;
+	}
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+	public Pregunta getPregunta() {
+		return pregunta;
+	}
+	public void setPregunta(Pregunta pregunta) {
+		this.pregunta = pregunta;
+	}
 	
 	
 	

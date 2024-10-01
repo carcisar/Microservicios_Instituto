@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -87,6 +89,16 @@ public class CursoController extends CommonController<Curso, CursoService>{
 	@GetMapping("/alumno/{id}")
 	public ResponseEntity<?> findByCursoByAlumnoId(@PathVariable Long id) {
 		Curso curso = service.findByCursoByAlumnoId(id);
+		if (curso != null) {
+			List<Long> examenesIds = (List<Long>) service.obtenerExamenesIdConRespuestasAlumnos(id);
+			List<Examen> examenes = curso.getExamenes().stream().map(examen -> {
+				if (examenesIds.contains(examen.getId())) {
+					examen.setRespondido(true);
+				}
+				return examen;
+			}).collect(Collectors.toList());
+			curso.setExamenes(examenes);
+		}
 		return ResponseEntity.ok(curso);
 		
 	}

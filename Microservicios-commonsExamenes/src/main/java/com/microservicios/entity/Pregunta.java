@@ -2,6 +2,7 @@ package com.microservicios.entity;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -26,7 +27,7 @@ public class Pregunta {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "examen_id")
-	@JsonIgnoreProperties(value = {"pregunta"})
+	@JsonIgnore
 	private Examen examen;
 	
 	

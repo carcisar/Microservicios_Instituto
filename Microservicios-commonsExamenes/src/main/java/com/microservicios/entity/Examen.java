@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -41,8 +42,8 @@ public class Examen {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
 	
-	@JsonIgnoreProperties(value = {"examen"}, allowSetters = true)
-	@OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+
+	@OneToMany(mappedBy = "examen")
 	private List<Pregunta> preguntas;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
