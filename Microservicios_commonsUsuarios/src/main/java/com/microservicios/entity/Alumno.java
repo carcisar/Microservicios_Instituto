@@ -36,7 +36,7 @@ public class Alumno {
 	private Date createAt;
 
 	@Lob
-	@Column(name = "foto", columnDefinition = "LONGBLOB")
+	@Column(name = "foto", columnDefinition = "BYTEA")
 	@JsonIgnore
 	private byte[] foto;
 

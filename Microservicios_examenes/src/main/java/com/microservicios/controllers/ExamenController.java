@@ -65,14 +65,10 @@ public class ExamenController extends CommonController<Examen, ExamenService>{
 		
 	}
 	
-
-	
 	@GetMapping("/filtrar/{term}")
 	public ResponseEntity<?> filtrar (@PathVariable String term){
 		return ResponseEntity.ok(service.findByNombre(term));
 	}
-	
-	
 	
 	@GetMapping("/asignaturas")
 	public ResponseEntity<?> listarAsignaturas(){
